@@ -35,7 +35,7 @@ get_header(); ?>
 			<small class="caption">Disclaimer: This is image is the result of a stock photo search of the phrase "laughing computer guy." This is not me. I do agree with this spirit, though.</small>
     </div>
     <div class="col-xs-6">
-      <h1>Hi, I'm a Web Designer</h1>
+      <h1>Hi, I'm a Human</h1>
       <p>I make things, blah, blah, blah. These are the things that everyone says. I've got ideas, shouting into the void, all things in all things.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente fugiat officiis perferendis repudiandae, labore excepturi perspiciatis eos distinctio nobis alias accusamus, sint necessitatibus! In.</p>
     </div>
@@ -49,7 +49,7 @@ get_header(); ?>
       <a href="#" class="btn btn-default btn-sm btn-block col-sm-4">View all projects</a>
     </div>
   </div>
-
+<br>
 
   <div class="row">
 
@@ -76,40 +76,38 @@ get_header(); ?>
       <a href="#" class="btn btn-default btn-sm btn-block col-sm-4">Read more blog posts</a>
     </div>
   </div>
+	<br>
   <div class="row">
 
+				<?php
+				$args = array('post_type' => 'post', 'posts_per_page' => 2);
+				$query = new WP_Query( $args );
+				?>
+					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+						<a href="#">
+				      <div class="col-sm-6">
+				        <div class="row">
+							<div class="col-xs-5">
 
-    <a href="#">
-      <div class="col-sm-6">
-        <div class="row">
-          <div class="col-xs-5">
-            <img src="http://placehold.it/400x300" alt="" />
-          </div>
-          <div class="col-xs-7">
-            <h4>The Importance of Empathy</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div>
-        </div>
-      </div>
-    </a>
-    <div class="col-sm-6">
-      <a href="#">
-        <div class="row">
-          <div class="col-xs-5">
-            <img src="http://placehold.it/400x300" alt="" />
-          </div>
-          <div class="col-xs-7">
-            <h4>Content Modeling</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, voluptatum, ea.</p>
-          </div>
-        </div>
-      </a>
+								<a href="<?php the_permalink(); ?>">
+		            <?php the_post_thumbnail($post->ID, array(300,300, true)); ?>
+								</a>
+		          </div>
+		          <div class="col-xs-7">
+								<a href="<?php the_permalink(); ?>">
+		            <h4><?php the_title(); ?></h4>
+							</a>
+		            <?php the_excerpt(); ?>
+		          </div>
+						</div>
+		      </div>
+		    </a>
+					<?php endwhile; wp_reset_query(); ?>
 
-    </div>
 
   </div>
 <div class="row">&nbsp;</div>
-  <h2>Clients I've Worked With</h2>
+  <!-- <h2>Clients I've Worked With</h2>
 
   <div class="row client-grid">
     <div class="col-xs-2"><img src="http://placehold.it/200x200" alt="" /></div>
@@ -124,34 +122,10 @@ get_header(); ?>
     <div class="col-xs-2"><img src="http://placehold.it/200x200" alt="" /></div>
     <div class="col-xs-2"><img src="http://placehold.it/200x200" alt="" /></div>
     <div class="col-xs-2"><img src="http://placehold.it/200x200" alt="" /></div>
-  </div>
+  </div> -->
 </div>
 
 			<?php
-			// Start the loop.
-			while ( have_posts() ) : the_post();
-
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
-
-			// End the loop.
-			endwhile;
-
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-				'next_text'          => __( 'Next page', 'twentysixteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
-			) );
-
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'template-parts/content', 'none' );
-
 		endif;
 		?>
 			</div>

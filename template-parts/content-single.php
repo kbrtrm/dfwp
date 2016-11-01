@@ -37,6 +37,7 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
+		<?php the_terms( $post->ID, 'project_type', 'Project Type: ', ', ', ' ' ); ?>
 		<?php twentysixteen_entry_meta(); ?>
 		<?php
 			edit_post_link(
