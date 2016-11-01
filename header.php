@@ -18,7 +18,9 @@
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<?php wp_head(); ?>
+
 </head>
 
 <body <?php body_class(); ?>>
@@ -26,7 +28,7 @@
 	<div class="site-inner">
 		<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
 
-		<header id="masthead" class="site-header" role="banner">
+		<!-- <header id="masthead" class="site-header" role="banner">
 			<div class="site-header-main">
 				<div class="site-branding">
 					<?php twentysixteen_the_custom_logo(); ?>
@@ -94,6 +96,6 @@
 					</a>
 				</div><!-- .header-image -->
 			<?php endif; // End header image check. ?>
-		</header><!-- .site-header -->
+		</header><!-- .site-header --> -->
 
 		<div id="content" class="site-content">
