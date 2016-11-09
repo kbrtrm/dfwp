@@ -36,7 +36,7 @@ get_header(); ?>
     </div>
     <div class="col-xs-6">
       <h1>Hi, I'm a Human</h1>
-      <p>I make things, blah, blah, blah. These are the things that everyone says. I've got ideas, shouting into the void, all things in all things.</p>
+      <p>I make things, blah, blah, blah BLAH. These are the things that everyone says. I've got ideas, shouting into the void, all things in all things.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente fugiat officiis perferendis repudiandae, labore excepturi perspiciatis eos distinctio nobis alias accusamus, sint necessitatibus! In.</p>
     </div>
   </div>
@@ -58,7 +58,7 @@ get_header(); ?>
 
 	      <div class="col-xs-4">
 					<a href="<?php the_permalink(); ?>">
-	        <?php the_post_thumbnail($post->ID, array(300,300, true)); ?>
+	        <?php the_post_thumbnail(); ?>
 	        <h4><?php the_title(); ?></h4>
 					</a>
 	        <?php the_excerpt(); ?>
@@ -90,7 +90,7 @@ get_header(); ?>
 							<div class="col-xs-5">
 
 								<a href="<?php the_permalink(); ?>">
-		            <?php the_post_thumbnail($post->ID, array(300,300, true)); ?>
+		            <?php the_post_thumbnail('square-large'); ?>
 								</a>
 		          </div>
 		          <div class="col-xs-7">

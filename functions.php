@@ -419,3 +419,30 @@ function twentysixteen_widget_tag_cloud_args( $args ) {
 	return $args;
 }
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
+
+if ( function_exists( 'add_theme_support' ) ) {
+    add_theme_support( 'post-thumbnails' );
+    add_image_size( 'square-large', 300, 300, true); // name, width, height, crop
+    add_filter('image_size_names_choose', 'my_image_sizes');
+}
+
+function my_image_sizes($sizes) {
+    $addsizes = array(
+        "square-large" => __( "Large square image")
+    );
+    $newsizes = array_merge($sizes, $addsizes);
+    return $newsizes;
+}
+
+// include_once( ABSPATH . 'wp-admin/includes/image.php' );
+// function regenerate_all_attachment_sizes() {
+//     $args = array( 'post_type' => 'attachment', 'numberposts' => 100, 'post_status' => null, 'post_parent' => null, 'post_mime_type' => 'image' );
+//     $attachments = get_posts( $args );
+//     if ($attachments) {
+//         foreach ( $attachments as $post ) {
+//             $file = get_attached_file( $post->ID );
+//             wp_update_attachment_metadata( $post->ID, wp_generate_attachment_metadata( $post->ID, $file ) );
+//         }
+//     }
+// }
+// regenerate_all_attachment_sizes();
